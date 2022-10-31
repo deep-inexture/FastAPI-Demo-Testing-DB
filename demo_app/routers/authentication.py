@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
-from demo_app import schemas, database, oauth2
+from domain.db import init_db
+from demo_app import schemas
 from demo_app.repository import authentication
 from dotenv import load_dotenv
 
@@ -14,7 +15,7 @@ load_dotenv()
 router = APIRouter(
     tags=["Authentication"]
 )
-get_db = database.get_db
+get_db = init_db
 
 
 @router.post('/register')
@@ -68,3 +69,10 @@ def new_access_token(db: Session = Depends(get_db)):
     """
 
     return authentication.get_all_user(db)
+
+
+# from fastapi import Request
+# @router.get('/test')
+# def some_get(http_request: Request) -> dict:
+#     print(http_request.session, '>>><<<<')
+#     return {'msg': f'Welcome {http_request.session["user"]["username"]}'}
