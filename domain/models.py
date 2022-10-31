@@ -1,4 +1,4 @@
-from demo_app.database import Base
+from domain.db import Base
 from sqlalchemy import String, Integer, Column, Float, Boolean, DateTime, ForeignKey, Date
 from sqlalchemy.orm import relationship
 
