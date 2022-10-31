@@ -1,9 +1,6 @@
 from fastapi import FastAPI
-from demo_app import models
-from demo_app.database import engine
 from demo_app.routers import authentication
-from fastapi.staticfiles import StaticFiles
-
+print('2.')
 from domain import db
 
 """
@@ -34,9 +31,6 @@ app = FastAPI(
     },
     openapi_tags=tags_metadata
 )
-
-"""Allow Static Files to use in app via mounting"""
-# app.mount("/templates", StaticFiles(directory="grocerystore/templates", html=True), name="templates")
 
 """Following command will create new tables if not exists in Database."""
 """Now We are using alembic migrations."""

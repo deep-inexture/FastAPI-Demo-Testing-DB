@@ -3,21 +3,21 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-
-"""
-Below are Registration Test Cases;
-+ve Test Cases : Return --> Json Response                        - 1 Nos
--ve Test Cases : Raises --> HTTP Exception Error Messages        - 4 Nos
-
-test_registration_success_200: Successful User Registration      : 200
-test_registration_email_exists_409: Email-ID Already Exists      : 409
-test_registration_invalid_email_401: Invalid Email-ID Format     : 401
-test_registration_password_mismatch_401: Password Mismatch Error : 401
-test_registration_password_format_401: Incorrect Password Format : 401
-"""
-"""++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"""
-
-
+#
+# """
+# Below are Registration Test Cases;
+# +ve Test Cases : Return --> Json Response                        - 1 Nos
+# -ve Test Cases : Raises --> HTTP Exception Error Messages        - 4 Nos
+#
+# test_registration_success_200: Successful User Registration      : 200
+# test_registration_email_exists_409: Email-ID Already Exists      : 409
+# test_registration_invalid_email_401: Invalid Email-ID Format     : 401
+# test_registration_password_mismatch_401: Password Mismatch Error : 401
+# test_registration_password_format_401: Incorrect Password Format : 401
+# """
+# """++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"""
+#
+#
 def test_registration_success_200(client):
     data = {
         "username": os.environ.get('username'),
@@ -40,8 +40,8 @@ def test_registration_email_exists_409(client):
     response = client.post('/register', json.dumps(data))
     assert response.status_code == 409
     assert "Email Already Exists"
-
-
+#
+#
 def test_registration_invalid_email_401(client):
     data = {
         "username": os.environ.get('username'),
@@ -51,7 +51,7 @@ def test_registration_invalid_email_401(client):
     }
     response = client.post('/register', json.dumps(data))
     assert response.status_code == 401
-    assert "Invalid Email-ID Format"
+    # assert "Invalid Email-ID Format"
 
 
 def test_registration_password_mismatch_401(client):

@@ -1,6 +1,5 @@
-from demo_app.database import Base
-from sqlalchemy import String, Integer, Column, Float, Boolean, DateTime, ForeignKey, Date
-from sqlalchemy.orm import relationship
+from domain.db import Base
+from sqlalchemy import String, Integer, Column, Boolean
 
 """
 This files stores schemas of tables like tableName, tableColumn, and its Datatype.

@@ -14,6 +14,7 @@ All Database query stuff also takes place here.
 
 
 def register(request, db: Session):
+    print('Reached Register')
     """
     Function provides validation and authentication before registering for endpoint.
     Parameters
@@ -37,7 +38,6 @@ def register(request, db: Session):
         raise HTTPException(status_code=401, detail=messages.PASSWORD_FORMAT_401)
 
     new_user = models.User(
-        id=1,
         username=request.username,
         email=request.email,
         password=Hash.bcrypt(request.password)
@@ -56,6 +56,7 @@ def register(request, db: Session):
 
 
 def login(request, db: Session):
+    print('Reached Login')
     """
     Check Validation and password along with token to let access to other endpoints.
     Parameters
